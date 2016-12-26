@@ -27,8 +27,7 @@
                        echo "<li><a href='#'>{$cat_title}</a></li>";
                        
                    }
-                   
-                   
+
                    ?>
                     <!--<li>-->
                     <!--    <a href="#">About</a>-->
