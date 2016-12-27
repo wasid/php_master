@@ -22,9 +22,7 @@
        
            $query = "SELECT * FROM categories";
            $cat_sidebar_query = mysqli_query($connection, $query);
-           
-          
-
+   
        ?>
 
         <!-- Blog Categories Well -->
