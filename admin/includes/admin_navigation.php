@@ -38,35 +38,35 @@
                         <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#posts_drop"><i class="fa fa-fw fa-arrows-v"></i> Posts <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#posts_drop"><i class="fa fa-fw fa-align-left"></i> Posts <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="posts_drop" class="collapse">
                             <li>
-                                <a href="#">View All Posts</a>
+                                <a href="./posts.php"><i class="fa fa-fw fa-align-justify"></i> View All Posts</a>
                             </li>
                             <li>
-                                <a href="#">Add Post</a>
+                                <a href="./posts.php?source=add_post"><i class="fa fa-fw fa-plus"></i> Add Post</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="../admin/categories.php"><i class="fa fa-fw fa-wrench"></i> Categories</a>
+                        <a href="./categories.php"><i class="fa fa-fw fa-briefcase"></i> Categories</a>
                     </li>
                     <li>
-                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Comments</a>
+                        <a href="blank-page.html"><i class="fa fa-fw fa-comments"></i> Comments</a>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-users"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="#">Add User</a>
+                                <a href="#"><i class="fa fa-fw fa-male"></i> Add User</a>
                             </li>
                             <li>
-                                <a href="#">Edit User</a>
+                                <a href="#" ><i class="fa fa-fw fa-pencil-square-o"></i> Edit User</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Profiles</a>
+                        <a href="blank-page.html"><i class="fa fa-fw fa-user"></i> Profiles</a>
                     </li>
                 </ul>
             </div>
