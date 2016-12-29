@@ -72,7 +72,7 @@
                         
                         ?>
                         </tbody>
-                      </table>
+                    </table>
                 </div>
             </div>
             <!-- /.container-fluid -->

@@ -41,8 +41,8 @@
                         include "includes/add_post.php";
                         break;
                         
-                    case '2':
-                        echo "Case 22";
+                    case 'update_post':
+                        include "includes/update_post.php";
                         break;
                     
                     default:
