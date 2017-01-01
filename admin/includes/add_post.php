@@ -39,10 +39,40 @@ if(isset($_POST['submit'])){
       <label for="title">Post Title:</label>
       <input name="title" type="text" class="form-control" placeholder="Enter Post Title">
     </div>
+    
+    
+    
+    
     <div class="form-group">
-      <label for="post_category">Post Category ID:</label>
-      <input name="post_category_id" type="text" class="form-control" placeholder="Enter Post Category ID">
+      <label for="post_category">Post Category:</label>
+      
+      <select name="post_category_id" id="">
+          
+          <?php
+          
+            $query = "SELECT * FROM categories";
+            $cat_query = mysqli_query($connection, $query);
+            
+            confirmQuery($cat_query);
+            
+            while($row = mysqli_fetch_assoc($cat_query)){
+                   
+                $cat_id = $row['cat_id'];
+                $cat_title = $row['cat_title'];
+                
+                echo "<option value='$cat_id'>$cat_title</option>";
+            }
+          
+          
+          ?>
+
+      </select>
+    
     </div>
+    
+    
+    
+    
     <div class="form-group">
       <label for="post_author">Post Author:</label>
       <input name="author" type="text" class="form-control" placeholder="Enter Post Author">

@@ -21,8 +21,31 @@
                 
                 <?php
                 
-                $query = "SELECT * FROM posts";
+                if (isset($_GET['category'])) {
+                    $post_cat_id = $_GET['category'];
+                }
+                
+                $query = "SELECT * FROM posts WHERE post_category_id = $post_cat_id";
                 $post_all_query = mysqli_query($connection, $query);
+                
+                $count = mysqli_num_rows($post_all_query);
+                
+                if($count == 0){
+                    
+                $cat_query = "SELECT * FROM categories WHERE cat_id = $post_cat_id";
+                $get_cat = mysqli_query($connection, $cat_query);
+            
+                    while($row = mysqli_fetch_assoc($get_cat)){
+                   
+                    $cat_id = $row['cat_id'];
+                    $cat_title = $row['cat_title'];
+            
+                
+                
+                    echo "<h1>No post yet in $cat_title category!</h1>";
+                
+                    }  
+                }
                    
                    while($row = mysqli_fetch_assoc($post_all_query)){
                        
@@ -32,6 +55,7 @@
                        $post_date= $row['post_date'];
                        $post_image = $row['post_image'];
                        $post_content = substr($row['post_content'], 0, 100);
+               
                 ?>
                   
 
@@ -51,7 +75,7 @@
                 <hr>
                 <img class="img-responsive" src="images/<?php echo $post_image ?>" alt="">
                 <hr>
-                <p><?php echo $post_content."....." ?></p>
+                <p><?php echo $post_content ?></p>
                 <a class="btn btn-primary" href="post.php?post_id=<?php echo $post_id ?>">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
                 <hr>
