@@ -9,6 +9,7 @@
             <th>Tags</th>
             <th>Status</th>
             <th>Image</th>
+            <th>Comments</th>
             <th>Date</th>
             <th>Action</th>
           </tr>
@@ -27,6 +28,7 @@
                     $post_cat_id = $row['post_category_id'];
                     $post_author = $row['post_author'];
                     $post_content = $row['post_content'];
+                    $post_comment_count = $row['post_comment_count'];
                     $post_tags = $row['post_tags'];
                     $post_status = $row['post_status'];
                     $post_date = $row['post_date'];
@@ -35,7 +37,7 @@
                     echo "<tr>";
                     echo "<td>{$post_id}</td>";
                     echo "<td>{$post_author}</td>";
-                    echo "<td>{$post_title}</td>";
+                    echo "<td><a href='../post.php?post_id=$post_id'>{$post_title}</a></td>";
                     
                     $query = "SELECT * FROM categories WHERE cat_id = $post_cat_id ";
                     $cat_query = mysqli_query($connection, $query);    
@@ -55,6 +57,7 @@
                     echo "<td>{$post_tags}</td>";
                     echo "<td>{$post_status}</td>";
                     echo "<td><img width='250' class='img-responsive' src='../images/{$post_image}' alt='image'></td>";
+                    echo "<td>{$post_comment_count}</td>";
                     echo "<td>{$post_date}</td>";
                     echo "<td><a href='posts.php?source=update_post&post_update_id={$post_id}'>Edit</a> | <a href='posts.php?delete={$post_id}'>Delete</a></td>";
                     echo "</tr>";
