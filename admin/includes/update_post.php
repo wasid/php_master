@@ -12,7 +12,7 @@
            
         $post_id = $row['post_id'];
         $post_title = $row['post_title'];
-        $post_category_id = $row['post_category_id'];
+        $post_cat_id = $row['post_category_id'];
         $post_author = $row['post_author'];
         $post_content = $row['post_content'];
         $post_tags = $row['post_tags'];
@@ -86,8 +86,21 @@
       <select name="u_post_category" id="">
           
           <?php
-          
-            // $query = "SELECT * FROM categories WHERE cat_id = $post_category_id ";
+            // getting current category
+            $query = "SELECT * FROM categories WHERE cat_id = $post_cat_id";
+            $cat_query = mysqli_query($connection, $query);
+            
+            confirmQuery($cat_query);
+            
+            while($row = mysqli_fetch_assoc($cat_query)){
+                   
+                $cat_id = $row['cat_id'];
+                $cat_title = $row['cat_title'];
+                
+                echo "<option value='$cat_id'>$cat_title</option>";
+            }
+            echo "<option>~~~~~~~</option>";
+            // for updating category
             $query = "SELECT * FROM categories";
             $cat_query = mysqli_query($connection, $query);
             

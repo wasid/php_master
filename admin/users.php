@@ -37,16 +37,16 @@
                 
                 switch ($source) {
                     
-                    case 'add_comment':
-                        include "includes/add_comment.php";
+                    case 'add_user':
+                        include "includes/add_user.php";
                         break;
                         
-                    case 'update_comment':
-                        include "includes/update_comment.php";
+                    case 'update_user':
+                        include "includes/update_user.php";
                         break;
                     
                     default:
-                        include "includes/view_all_comments.php";
+                        include "includes/view_all_users.php";
                         break;
                 }
                 

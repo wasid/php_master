@@ -17,7 +17,7 @@
         <div class="row">
 
             <!-- Blog Entries Column -->
-            <div class="col-md-8">
+            <div class="col-md-8 success">
                 
                 <?php
                 
@@ -70,7 +70,11 @@
             <?php } ?>
 
             </div>
-
+            
+            <!--Ajux test-->
+            <!--<div class="col-md-8">-->
+            <!--    <div class="success"></div>-->
+            <!--</div>-->
             <!-- Blog Sidebar Widgets Column -->
 
 <?php include "includes/sidebar.php"; ?>
@@ -81,3 +85,22 @@
         <hr>
 
 <?php include "includes/footer.php"; ?>
+
+<script>
+    
+   $( document ).ready(function() {
+       $('.search').keyup(function(){
+           var search=$(this).val();
+          console.log( search );
+            $.post($('form').attr('action'),
+            {'search':search},
+            function(data){
+                    $('.success').html(data);
+                
+                }
+            )
+       })
+    
+    });
+    
+</script>
