@@ -15,9 +15,10 @@
     <div class="container">
 
         <div class="row">
-
+            <div class="col-md-8">
+            </div>
             <!-- Blog Entries Column -->
-            <div class="col-md-8 success">
+            <div class="col-md-8 success_search">
                 
                 <?php
                 
@@ -86,21 +87,3 @@
 
 <?php include "includes/footer.php"; ?>
 
-<script>
-    
-   $( document ).ready(function() {
-       $('.search').keyup(function(){
-           var search=$(this).val();
-          console.log( search );
-            $.post($('form').attr('action'),
-            {'search':search},
-            function(data){
-                    $('.success').html(data);
-                
-                }
-            )
-       })
-    
-    });
-    
-</script>

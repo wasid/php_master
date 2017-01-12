@@ -7,12 +7,7 @@
             <h4>Blog Search</h4>
             <form action="search_ajax.php" method="post">
                 <div class="input-group">
-                    <input name="search" type="text" class="form-control search">
-                    <span class="input-group-btn">
-                        <button name="submit" class="btn btn-default" type="submit">
-                            <span class="glyphicon glyphicon-search"></span>
-                    </button>
-                    </span>
+                    <input name="search" type="text" class="form-control search" placeholder="Search by tags!">
                 </div>
             </form><!--Search Form-->
             <!-- /.input-group -->
