@@ -43,7 +43,9 @@
                        $post_status = $row['post_status'];
 
                        
-                       
+                    if ($post_status == 'Published') {
+                      
+                     
                 ?>
                   
 
@@ -68,7 +70,12 @@
 
                 <hr>
 
-            <?php } ?>
+            <?php }
+                else{
+                    
+                    echo"<h1 class='text-center'>Post is waiting for Admin approval!</h1>";
+                }
+            } ?>
 
             </div>
             

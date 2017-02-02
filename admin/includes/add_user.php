@@ -1,30 +1,31 @@
 <?php
 
-if(isset($_POST['submit'])){
+if(isset($_POST['user_submit'])){
     
-    $post_title = $_POST['title'];
-    $post_author = $_POST['author'];
-    $post_category_id = $_POST['post_category_id'];
-    $post_status = $_POST['post_status'];
+    $username = $_POST['username'];
+    $user_password = $_POST['user_password'];
+    $user_firstname = $_POST['user_firstname'];
+    $user_lastname = $_POST['user_lastname'];
     
-    $post_image = $_FILES['image']['name'];
-    $post_image_temp = $_FILES['image']['tmp_name'];
+    $user_image = $_FILES['image']['name'];
+    $user_image_temp = $_FILES['image']['tmp_name'];
     
-    $post_tags = $_POST['post_tags'];
-    $post_content = $_POST['post_content'];
-    $post_date = date('d-m-y');
+    $user_email = $_POST['user_email'];
+    $user_role = $_POST['user_role'];
     
-    move_uploaded_file($post_image_temp, "../images/$post_image");
+    move_uploaded_file($user_image_temp, "../images/$user_image");
     
-    $query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date, post_image, post_content, post_tags, post_status)";
+    $query = "INSERT INTO users(username, user_password, user_firstname, user_lastname, user_email, user_image, user_role )";
     
-    $query .= "VALUE( {$post_category_id}, '{$post_title}', '{$post_author}', now(), '{$post_image}', '{$post_content}', '{$post_tags}', '{$post_status}' ) ";
-    
-    
-    $create_post_query = mysqli_query($connection, $query);
+    $query .= "VALUE( '{$username}', '{$user_password}', '{$user_firstname}', '{$user_lastname}', '{$user_email}', '{$user_image}', '{$user_role}' ) ";
     
     
-    confirmQuery($create_post_query);
+    $create_user_query = mysqli_query($connection, $query);
+    
+    
+    confirmQuery($create_user_query);
+    
+    header("Location: users.php");
 
     
   }  
@@ -49,11 +50,11 @@ if(isset($_POST['submit'])){
     <div class="form-group">
       <label for="user_role">User Role:</label>
       
-      <select name="role_id" id="">
+      <select name="user_role" id="">
           
-        <option value='1'>Admin</option>
-        <option value='2'>Author</option>
-        <option value='3'>Subscriber</option>
+        <option value='Admin'>Admin</option>
+        <option value='Author'>Author</option>
+        <option value='Author'>Subscriber</option>
 
       </select>
     
@@ -76,12 +77,12 @@ if(isset($_POST['submit'])){
     </div>
     <div class="form-group">
       <label for="user_image">User Image:</label>
-      <input name="user_image" type="file">
+      <input name="image" type="file">
     </div>
     <!--<div class="form-group">-->
     <!--  <label for="user_role">User Role:</label>-->
     <!--  <input name="user_role" type="text" class="form-control" placeholder="Enter User Role">-->
     <!--</div>-->
 
-    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" name="user_submit" class="btn btn-primary">Submit</button>
 </form>

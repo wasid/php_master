@@ -42,7 +42,7 @@
             
                 
                 
-                    echo "<h1>No post yet in $cat_title category!</h1>";
+                    echo "<h1 class='text-center'>No post yet in $cat_title category!</h1>";
                 
                     }  
                 }
@@ -54,7 +54,10 @@
                        $post_author = $row['post_author'];
                        $post_date= $row['post_date'];
                        $post_image = $row['post_image'];
+                       $post_status = $row['post_status'];
                        $post_content = substr($row['post_content'], 0, 100);
+                  
+                  if ($post_status == 'Published') {
                
                 ?>
                   
@@ -80,7 +83,13 @@
 
                 <hr>
 
-            <?php } ?>
+            <?php
+                  }
+                else{
+                    
+                    echo"<h1 class='text-center'>Post is waiting for Admin approval!</h1>";
+                }
+            } ?>
 
             </div>
 

@@ -12,12 +12,12 @@
 
 
     <!-- Page Content -->
-    <div class="container">
+    <!--<div class="container">-->
 
-        <div class="row">
+    <!--    <div class="row">-->
 
             <!-- Blog Entries Column -->
-            <div class="col-md-8">
+    <!--        <div class="col-md-8">-->
                 
                 <?php
 
@@ -46,6 +46,7 @@
                     
                        while($row = mysqli_fetch_assoc($search_query)){
                            
+                           $post_id = $row['post_id'];
                            $post_title = $row['post_title'];
                            $post_author = $row['post_author'];
                            $post_date= $row['post_date'];
@@ -61,7 +62,7 @@
     
                     <!-- First Blog Post -->
                     <h2>
-                        <a href="#"><?php echo $post_title ?></a>
+                        <a href="post.php?post_id=<?php echo $post_id ?>"><?php echo $post_title ?></a>
                     </h2>
                     <p class="lead">
                         by <a href="index.php"><?php echo $post_author ?></a>
@@ -71,9 +72,8 @@
                     <img class="img-responsive" src="images/<?php echo $post_image ?>" alt="">
                     <hr>
                     <p><?php echo $post_content ?></p>
-                    <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+                    <a class="btn btn-primary" href="post.php?post_id=<?php echo $post_id ?>">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
     
-                    <hr>
     
                 <?php } 
 
@@ -84,12 +84,12 @@
         
                 
                 
-            </div>
+        <!--    </div>-->
 
             <!-- Blog Sidebar Widgets Column -->
 
 
-        </div>
+        <!--</div>-->
         <!-- /.row -->
 
-        <hr>
+        <!--<hr>-->

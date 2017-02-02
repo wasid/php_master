@@ -61,7 +61,7 @@
                                 <a href="./users.php"><i class="fa fa-fw fa-male"></i> Show All User</a>
                             </li>
                             <li>
-                                <a href="./users.php?source=add_user" ><i class="fa fa-fw fa-pencil-square-o"></i> Edit User</a>
+                                <a href="./users.php?source=add_user" ><i class="fa fa-fw fa-plus"></i> Add User</a>
                             </li>
                         </ul>
                     </li>

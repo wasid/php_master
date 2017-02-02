@@ -39,9 +39,8 @@
                     echo "<td>{$user_lastname}</td>";
                     echo "<td>{$user_email}</td>";
                     echo "<td>{$user_role}</td>";
-                    echo "<td>{$user_image}</td>";
-
-                    echo "<td><a href='users.php?approve={$user_id}'>Approve</a> | <a href='users.php?unapprove={$user_id}'>Unapprove</a></td>";
+                    echo "<td><img width='250' class='img-responsive' src='../images/{$user_image}' alt='image'></td>";
+                    echo "<td><a href='users.php?add_admin={$user_id}'>Make Admin</a> | <a href='users.php?add_sub={$user_id}'>Make Subscriber</a> | <a href='users.php?add_auth={$user_id}'>Make Author</a></td>";
                     echo "<td><a href='users.php?delete={$user_id}'>Delete</a></td>";
                     echo "</tr>";
                 }
@@ -52,30 +51,39 @@
       
       <?php
       
-       if (isset($_GET['approve'])) {
+       if (isset($_GET['add_admin'])) {
         
-        $approve_comment_id = $_GET['approve'];
-        $approve_comment = "UPDATE comments SET comment_status = 'Approved' WHERE comment_id = {$approve_comment_id} ";
-        $approve_comment_query = mysqli_query($connection, $approve_comment);
-        header("Location: comments.php");
+        $admin_user_id = $_GET['add_admin'];
+        $admin_user = "UPDATE users SET user_role = 'Admin' WHERE user_id = {$admin_user_id} ";
+        $admin_user_query = mysqli_query($connection, $admin_user);
+        header("Location: users.php");
         
       }
       
-      if (isset($_GET['unapprove'])) {
+      if (isset($_GET['add_sub'])) {
         
-        $unapprove_comment_id = $_GET['unapprove'];
-        $unapprove_comment = "UPDATE comments SET comment_status = 'Unapproved' WHERE comment_id = {$unapprove_comment_id} ";
-        $unapprove_comment_query = mysqli_query($connection, $unapprove_comment);
-        header("Location: comments.php");
+        $sub_user_id = $_GET['add_sub'];
+        $sub_user = "UPDATE users SET user_role = 'Subscriber' WHERE user_id = {$sub_user_id} ";
+        $sub_user_query = mysqli_query($connection, $sub_user);
+        header("Location: users.php");
+        
+      }
+      
+      if (isset($_GET['add_auth'])) {
+        
+        $auth_user_id = $_GET['add_auth'];
+        $auth_user = "UPDATE users SET user_role = 'Author' WHERE user_id = {$auth_user_id} ";
+        $auth_user_query = mysqli_query($connection, $auth_user);
+        header("Location: users.php");
         
       }
       
       if (isset($_GET['delete'])) {
         
-        $del_comment_id = $_GET['delete'];
-        $query_comment = "DELETE FROM comments WHERE comment_id = {$del_comment_id} ";
-        $del_comment_query = mysqli_query($connection, $query_comment);
-        header("Location: comments.php");
+        $del_user_id = $_GET['delete'];
+        $query_user = "DELETE FROM users WHERE user_id = {$del_user_id} ";
+        $del_user_query = mysqli_query($connection, $query_user);
+        header("Location: users.php");
         
       }
       
