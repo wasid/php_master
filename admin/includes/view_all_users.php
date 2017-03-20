@@ -41,7 +41,7 @@
                     echo "<td>{$user_role}</td>";
                     echo "<td><img width='250' class='img-responsive' src='../images/{$user_image}' alt='image'></td>";
                     echo "<td><a href='users.php?add_admin={$user_id}'>Make Admin</a> | <a href='users.php?add_sub={$user_id}'>Make Subscriber</a> | <a href='users.php?add_auth={$user_id}'>Make Author</a></td>";
-                    echo "<td><a href='users.php?delete={$user_id}'>Delete</a></td>";
+                    echo "<td><a href='users.php?source=update_user&update_user={$user_id}'>Edit</a> | <a href='users.php?delete={$user_id}'>Delete</a></td>";
                     echo "</tr>";
                 }
                 ?>  
