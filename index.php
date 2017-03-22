@@ -79,7 +79,7 @@
 
             </div>
             
-            <!--Ajux test-->
+            <!--Ajax test-->
             <!--<div class="col-md-8">-->
             <!--    <div class="success"></div>-->
             <!--</div>-->
