@@ -6,6 +6,13 @@
 if (!isset($_SESSION['user_role'])) {
     header("Location: ../index.php");
 }
+elseif (isset($_SESSION['user_role'])) {
+    
+    if (($_SESSION['user_role']) !== "Admin") {
+       header("Location: ../index.php");
+    }
+   
+}
 
 ?>
 
