@@ -2,10 +2,25 @@
 
 <?php
 
-    if (isset($_SESSION['user_role'])) {
+    if (isset($_SESSION['username'])) {
         
-    
-        
+      $username = $_SESSION['username'];
+      
+      $query = "SELECT * FROM users WHERE username = '{$username}' ";
+      
+      $select_user_profile_query = mysqli_query($connection, $query);
+      
+      while($row = mysqli_fetch_assoc($select_user_profile_query)){             
+                    $user_id = $row['user_id'];
+                    $username = $row['username'];
+                    $user_password = $row['user_password'];
+                    $user_firstname = $row['user_firstname'];
+                    $user_lastname = $row['user_lastname'];
+                    $user_email = $row['user_email'];
+                    $user_role = $row['user_role'];
+                    $user_image = $row['user_image'];
+                    $user_ranSalt = $row['user_ranSalt'];
+                }
     }
 
 ?>
@@ -102,7 +117,7 @@
                     <!--  <input name="user_role" type="text" class="form-control" placeholder="Enter User Role">-->
                     <!--</div>-->
                 
-                    <button type="submit" name="update_user_submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" name="update_user_submit" class="btn btn-primary">Update Profile</button>
                 </form>
 
             </div>
