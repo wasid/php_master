@@ -22,6 +22,43 @@
                     $user_ranSalt = $row['user_ranSalt'];
                 }
     }
+    
+    if(isset($_POST['update_profile'])){
+  
+    $username = $_POST['username'];
+    $user_password = $_POST['user_password'];
+    $user_firstname = $_POST['user_firstname'];
+    $user_lastname = $_POST['user_lastname'];
+    
+    // $user_image = $_FILES['image']['name'];
+    // $user_image_temp = $_FILES['image']['tmp_name'];
+    
+    $user_email = $_POST['user_email'];
+    $user_role = $_POST['user_role'];
+    
+    // move_uploaded_file($user_image_temp, "../images/$user_image");
+    
+   $query = "UPDATE users SET ";
+        $query .="username = '{$username}', ";
+        $query .="user_password = {$user_password}, ";
+        $query .="user_firstname = '{$user_firstname}', ";
+        $query .="user_lastname = '{$user_lastname}', ";
+        // $query .="post_date = now(), ";
+        // $query .="post_image = '{$post_image}', ";
+        $query .="user_email = '{$user_email}', ";
+        $query .="user_role = '{$user_role}' ";
+        $query .="WHERE username = '{$username}' ";
+        
+        $update_user_query = mysqli_query($connection, $query);
+
+        confirmQuery($update_user_query);
+        
+    
+    header("Location: profile.php");
+
+    
+  }  
+    
 
 ?>
 
@@ -117,7 +154,7 @@
                     <!--  <input name="user_role" type="text" class="form-control" placeholder="Enter User Role">-->
                     <!--</div>-->
                 
-                    <button type="submit" name="update_user_submit" class="btn btn-primary">Update Profile</button>
+                    <button type="submit" name="update_profile" class="btn btn-primary">Update Profile</button>
                 </form>
 
             </div>
