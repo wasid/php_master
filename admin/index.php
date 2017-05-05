@@ -153,6 +153,35 @@
                 </div>
                 <!-- /.row -->
                 
+                <?php
+                
+                                    
+                $query_published_post = "SELECT * FROM  posts WHERE post_status = 'Published' ";
+                $select_all_published_post = mysqli_query($connection, $query_published_post);
+                $count_published_post = mysqli_num_rows($select_all_published_post);
+                
+                $query_unpublished_post = "SELECT * FROM  posts WHERE post_status = 'Unpublished' ";
+                $select_all_unpublished_post = mysqli_query($connection, $query_unpublished_post);
+                $count_unpublished_post = mysqli_num_rows($select_all_unpublished_post);
+                
+                $query_published_comment = "SELECT * FROM  comments WHERE comment_status = 'Approved' ";
+                $select_all_published_comment = mysqli_query($connection, $query_published_comment);
+                $count_published_comment = mysqli_num_rows($select_all_published_comment);
+                
+                $query_unpublished_comment = "SELECT * FROM  comments WHERE comment_status = 'Unapproved' ";
+                $select_all_unpublished_comment = mysqli_query($connection, $query_unpublished_comment);
+                $count_unpublished_comment = mysqli_num_rows($select_all_unpublished_comment);
+                
+                $query_admin = "SELECT * FROM  users WHERE user_role = 'Admin' ";
+                $select_all_admin = mysqli_query($connection, $query_admin);
+                $count_admin = mysqli_num_rows($select_all_admin);
+                
+                $query_author = "SELECT * FROM  users WHERE user_role = 'Author' ";
+                $select_all_author = mysqli_query($connection, $query_author);
+                $count_author = mysqli_num_rows($select_all_author);
+                
+                ?> 
+                
                 <div class="row">
                     <script type="text/javascript">
                       google.charts.load('current', {'packages':['bar']});
@@ -162,16 +191,17 @@
                         var data = google.visualization.arrayToDataTable([
                           ['Data', 'Count'],
                           
-                          <?php
-                          
-                          $element_text = ['Active Posts', 'Comments', 'Users', 'Categories']; 
-                          $element_count = [$count_post, $count_comment, $count_user, $count_category]; 
-                          
-                          for($i = 0; $i < 4; $i++){
-                              echo "['$element_text[$i]'" . ", " . "$element_count[$i]],";
-                          }
-                          
-                          ?>
+      <?php
+      
+      $element_text = ['Active Post', 'Pending Post', 'Active Comment', 'Pending Comment', 'Admin', 'Author', 'Categories']; 
+      
+      $element_count = [$count_published_post, $count_unpublished_post, $count_published_comment, $count_unpublished_comment, $count_admin, $count_author, $count_category]; 
+      
+      for($i = 0; $i < 7; $i++){
+          echo "['$element_text[$i]'" . ", " . "$element_count[$i]],";
+      }
+      
+      ?>
                           
                         //   ['Posts', 350]
                         ]);
