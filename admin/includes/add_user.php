@@ -25,7 +25,9 @@ if(isset($_POST['user_submit'])){
     
     confirmQuery($create_user_query);
     
-    header("Location: users.php");
+    echo "User Created: " . " " . "<a href='users.php'>View Users</a>";
+    
+    // header("Location: users.php");
 
     
   }  
