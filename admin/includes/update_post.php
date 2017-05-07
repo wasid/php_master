@@ -128,7 +128,18 @@
     </div>
     <div class="form-group">
       <label for="post_status">Post Status:</label>
-      <input name="u_post_status" type="text" class="form-control" value="<?php echo $post_status; ?>">
+      <!--<input name="u_post_status" type="text" class="form-control" value="">-->
+      <select name="u_post_status" id="">
+        <option value="<?php echo $post_status; ?>"><?php echo $post_status; ?></option>
+        <?php 
+          if($post_status == 'Published'){
+           echo "<option value='Unpublished'>Unpublished</option>";
+          } else{
+           echo "<option value='Published'>Published</option>"; 
+          }
+        ?>
+        
+      </select>
     </div>
     
     <!--images upload-->
