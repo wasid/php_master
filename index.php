@@ -62,10 +62,19 @@
                     by <a href="index.php"><?php echo $post_author ?></a>
                 </p>
                 <p><span class="glyphicon glyphicon-time"></span> Posted on <?php echo $post_date ?></p>
+                
                 <hr>
-                <img class="img-responsive" src="images/<?php echo $post_image ?>" alt="">
+                
+                <a href="post.php?post_id=<?php echo $post_id ?>">
+                    
+                    <img class="img-responsive" src="images/<?php echo $post_image ?>" alt="">
+                    
+                </a>
+                
                 <hr>
+                
                 <p><?php echo $post_content."....." ?></p>
+                
                 <a class="btn btn-primary" href="post.php?post_id=<?php echo $post_id ?>">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
                 <hr>
