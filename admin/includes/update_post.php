@@ -63,7 +63,9 @@
 
         confirmQuery($update_post_query);
         
-        header("Location: posts.php");
+        echo "<p class='bg-success'>Post Updated Successfully: " . " " . "<a href='../../post.php?post_id=$post_id'>View Updated Post</a> or <a href='../admin/posts.php'>View All Posts</a></p>";
+        
+        // header("Location: posts.php");
 
         }
 
