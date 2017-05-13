@@ -1,3 +1,4 @@
+<?php session_start(); ?>
     <!-- Navigation -->    
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -29,16 +30,24 @@
                    }
 
                    ?>
-                   <li><a href="admin/index.php">Admin</a></li>
-                    <!--<li>-->
-                    <!--    <a href="#">About</a>-->
-                    <!--</li>-->
-                    <!--<li>-->
-                    <!--    <a href="#">Services</a>-->
-                    <!--</li>-->
-                    <!--<li>-->
-                    <!--    <a href="#">Contact</a>-->
-                    <!--</li>-->
+                   <li><a href="admin/index.php">Admin Area</a></li>
+<?php
+
+if (isset($_SESSION['user_role'])) {
+    
+    if (isset($_GET['post_id'])){
+        $post_id = $_GET['post_id'];
+    
+    echo "<li>
+              <a href='admin/posts.php?source=update_post&post_update_id=$post_id'>Edit Post</a>
+          </li>";
+    }
+}
+
+
+?>
+                    
+
                 </ul>
                 
             </div>
