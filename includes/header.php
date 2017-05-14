@@ -1,3 +1,6 @@
+<!--Session start for Index and so on rathar than admin area-->
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 

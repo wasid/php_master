@@ -1,3 +1,17 @@
+<form action="" method="post">
+  <div id="bulkOptionContainer" class="col-xs-4">
+    <select class="form-control" name="" id="">
+      <option value="">Published</option>
+      <option value="">Unpublished</option>
+      <option value="">Delete</option>
+    </select>
+  </div>
+  <div class="col-xm-4">
+    <input class="btn btn-success" type="submit" value="Apply"/>
+    <a class="btn btn-primary" href="add_post.php">Add New</a>
+  </div>
+  
+
     <table class="table table-bordered table-hover">
         <thead>
           <tr>
@@ -66,6 +80,7 @@
 
             </tbody>
       </table>
+    </form>  
       
       <?php
       
