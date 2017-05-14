@@ -1,6 +1,23 @@
+<?php
+
+if(isset($_POST['selectBoxArray'])){
+  
+  $allbox = $_POST['selectBoxArray'];
+  
+  foreach($allbox as $val){
+  
+  $bulk_options = $_POST['bulk_options'];
+  
+
+    
+  }
+}
+
+?>
+
 <form action="" method="post">
   <div id="bulkOptionContainer" class="col-xs-4">
-    <select class="form-control" name="" id="">
+    <select class="form-control" name="bulk_options" id="">
       <option value="">Published</option>
       <option value="">Unpublished</option>
       <option value="">Delete</option>
