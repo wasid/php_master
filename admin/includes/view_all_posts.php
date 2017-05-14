@@ -1,14 +1,34 @@
 <?php
 
-if(isset($_POST['selectBoxArray'])){
+if(isset($_POST['selectBoxIdArray'])){
   
-  $allbox = $_POST['selectBoxArray'];
+  $allboxId = $_POST['selectBoxIdArray'];
   
-  foreach($allbox as $val){
+  foreach($allboxId as $post_Id){
   
   $bulk_options = $_POST['bulk_options'];
   
-
+    switch($bulk_options){
+      
+      case 'Published':
+          echo "Published";
+          $query = "UPDATE posts SET ";
+          $query .="post_status = '{$bulk_options}' ";
+          $query .="WHERE post_id = '{$post_Id}' ";
+          
+          $update_post_query = mysqli_query($connection, $query);
+  
+          confirmQuery($update_post_query);
+        break;
+      case 'Unpublished':
+        echo 'Unpublished';
+        break;
+      case 'Delete':
+        echo 'Delete';
+        break;
+      
+    }
+  
     
   }
 }
@@ -18,9 +38,9 @@ if(isset($_POST['selectBoxArray'])){
 <form action="" method="post">
   <div id="bulkOptionContainer" class="col-xs-4">
     <select class="form-control" name="bulk_options" id="">
-      <option value="">Published</option>
-      <option value="">Unpublished</option>
-      <option value="">Delete</option>
+      <option value="Published">Published</option>
+      <option value="Unpublished">Unpublished</option>
+      <option value="Delete">Delete</option>
     </select>
   </div>
   <div class="col-xm-4">
@@ -68,7 +88,7 @@ if(isset($_POST['selectBoxArray'])){
             
                     echo "<tr>";
                     ?>
-                    <td><input class='selectBox' type='checkbox' name='selectBoxArray[]' value='<?php echo $post_id; ?>'/></td>
+                    <td><input class='selectBox' type='checkbox' name='selectBoxIdArray[]' value='<?php echo $post_id; ?>'/></td>
                     <?php
                     echo "<td>{$post_id}</td>";
                     echo "<td>{$post_author}</td>";
