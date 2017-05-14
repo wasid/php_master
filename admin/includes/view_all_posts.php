@@ -15,6 +15,7 @@
     <table class="table table-bordered table-hover">
         <thead>
           <tr>
+            <th><input id="selectAllBox" type="checkbox" /></th>
             <th>ID</th>
             <th>Author</th>
             <th>Title</th>
@@ -49,6 +50,9 @@
                     $post_image = $row['post_image'];
             
                     echo "<tr>";
+                    ?>
+                    <td><input class='selectBox' type='checkbox' name='selectBoxArray[]' value='<?php echo $post_id; ?>'/></td>
+                    <?php
                     echo "<td>{$post_id}</td>";
                     echo "<td>{$post_author}</td>";
                     echo "<td><a href='../post.php?post_id=$post_id'>{$post_title}</a></td>";
@@ -65,7 +69,6 @@
                     
                       
                     }
-                    
                     
                     echo "<td>{$post_content}</td>";
                     echo "<td>{$post_tags}</td>";
