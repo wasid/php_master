@@ -11,20 +11,38 @@ if(isset($_POST['selectBoxIdArray'])){
     switch($bulk_options){
       
       case 'Published':
-          echo "Published";
+          
           $query = "UPDATE posts SET ";
           $query .="post_status = '{$bulk_options}' ";
           $query .="WHERE post_id = '{$post_Id}' ";
           
-          $update_post_query = mysqli_query($connection, $query);
+          $update_published_post_query = mysqli_query($connection, $query);
   
-          confirmQuery($update_post_query);
+          confirmQuery($update_published_post_query);
+          
         break;
+        
       case 'Unpublished':
-        echo 'Unpublished';
+        
+          $query = "UPDATE posts SET ";
+          $query .="post_status = '{$bulk_options}' ";
+          $query .="WHERE post_id = '{$post_Id}' ";
+          
+          $update_unpublished_post_query = mysqli_query($connection, $query);
+  
+          confirmQuery($update_unpublished_post_query);
+          
         break;
+      
       case 'Delete':
-        echo 'Delete';
+        
+          $query = "DELETE FROM posts ";
+          $query .="WHERE post_id = '{$post_Id}' ";
+          
+          $delete_post_query = mysqli_query($connection, $query);
+  
+          confirmQuery($delete_post_query);
+      
         break;
       
     }
@@ -45,7 +63,7 @@ if(isset($_POST['selectBoxIdArray'])){
   </div>
   <div class="col-xm-4">
     <input class="btn btn-success" type="submit" value="Apply"/>
-    <a class="btn btn-primary" href="add_post.php">Add New</a>
+    <a class="btn btn-primary" href="../admin/posts.php?source=add_post">Add New</a>
   </div>
   
 
