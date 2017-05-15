@@ -50,7 +50,7 @@ elseif (isset($_SESSION['user_role'])) {
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <!--TinyMCE-->
     <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
-    <script src="../js/tinyscript.js"></script>
+
 </head>
 
 <body>

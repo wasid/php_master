@@ -4,6 +4,7 @@
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
+    
     <!--Custom Script-->
     <script src="../js/script.js"></script>
 
