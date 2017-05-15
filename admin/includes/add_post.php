@@ -25,11 +25,12 @@ if(isset($_POST['submit'])){
     
     
     confirmQuery($create_post_query);
+    
+    $created_post_id = mysqli_insert_id($connection);
+    
+    echo "<p class='bg-success'>Post Created Successfully: " . " " . "<a href='../../post.php?post_id=$created_post_id'>View Added Post</a> or <a href='../admin/posts.php'>View All Posts</a></p>";
 
-    
   }  
-    
-    
 
 ?>
 
