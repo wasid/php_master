@@ -1,4 +1,9 @@
- $(document).ready(function(){
+// TinyMCE config
+
+tinymce.init({ selector:'textarea' });
+
+
+$(document).ready(function(){
 
     // ajax search script
     
@@ -33,11 +38,6 @@
             });
     
        });
-
-// TinyMCE config
-
-tinymce.init({ selector:'textarea' });
-
 
 // Bulk Option for Posts
     $('#selectAllBox').click(function(event){

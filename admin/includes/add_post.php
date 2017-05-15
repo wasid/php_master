@@ -69,16 +69,16 @@ if(isset($_POST['submit'])){
     
     </div>
     
-    
-    
-    
     <div class="form-group">
       <label for="post_author">Post Author:</label>
       <input name="author" type="text" class="form-control" placeholder="Enter Post Author">
     </div>
     <div class="form-group">
       <label for="post_status">Post Status:</label>
-      <input name="post_status" type="text" class="form-control" placeholder="Enter Post Status">
+      <select name="post_status" id="">
+        <option value="Published">Published</option>
+        <option value="Unpublished">Unpublished</option>
+      </select>
     </div>
     <div class="form-group">
       <label for="post_image">Post Image:</label>
