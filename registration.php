@@ -12,11 +12,45 @@
     <!-- functions -->
 <?php include "admin/function.php"; ?>
 
+<?php
+
+
+if(isset($_POST['submit'])){
+    
+    $username      = $_POST['username'];
+    $user_email    = $_POST['email'];
+    $user_password = $_POST['password'];
+    
+    echo $username      = mysqli_real_escape_string($connection, $username);
+    $user_email    = mysqli_real_escape_string($connection, $user_email);
+    $user_password = mysqli_real_escape_string($connection, $user_password);
+
+
+    
+    // $query = "INSERT INTO users(username, user_password, user_firstname, user_lastname, user_email, user_image, user_role )";
+    
+    // $query .= "VALUE( '{$username}', '{$user_password}', '{$user_firstname}', '{$user_lastname}', '{$user_email}', '{$user_image}', '{$user_role}' ) ";
+    
+    
+    //     $update_user_query = mysqli_query($connection, $query);
+
+    //     confirmQuery($update_user_query);
+        
+    
+    // header("Location: users.php");
+
+    
+  }  
+    
+    
+
+?>
+
 <div class="container">
     <div class="row">
         <div class="col-xs-6 col-xs-offset-3">
-            <h1>Registration</h1>
-            <form action="" method="" class="register-form"> 
+            <h1 class="text-center">Registration</h1>
+            <form action="" method="POST"> 
                     <div class="form-group">
                        <input name="username" class="form-control" type="text" placeholder="Enter username">    
                     </div>            
@@ -27,7 +61,7 @@
                         <input name="password" class="form-control" type="password" placeholder="Enter password">             
                     </div>            
                     <hr>
-                       <button class="btn btn-primary btn-block">Register</button>
+                       <button type="submit" name="submit" class="btn btn-primary btn-lg btn-block">Register</button>
             </form>
         </div>
         
