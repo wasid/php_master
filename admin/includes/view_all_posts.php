@@ -131,7 +131,7 @@ if(isset($_POST['selectBoxIdArray'])){
                     echo "<td><img width='250' class='img-responsive' src='../images/{$post_image}' alt='image'></td>";
                     echo "<td>{$post_comment_count}</td>";
                     echo "<td>{$post_date}</td>";
-                    echo "<td><a href='posts.php?source=update_post&post_update_id={$post_id}'>Edit</a> | <a href='posts.php?delete={$post_id}'>Delete</a></td>";
+                    echo "<td><a href='posts.php?source=update_post&post_update_id={$post_id}'>Edit</a> | <a onClick=\" javascript: return confirm('Are you sure you want to delete?'); \" href='posts.php?delete={$post_id}'>Delete</a></td>";
                     echo "</tr>";
                 }
                 ?>  
