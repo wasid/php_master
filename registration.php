@@ -21,9 +21,14 @@ if(isset($_POST['submit'])){
     $user_email    = $_POST['email'];
     $user_password = $_POST['password'];
     
-    echo $username      = mysqli_real_escape_string($connection, $username);
+    $username      = mysqli_real_escape_string($connection, $username);
     $user_email    = mysqli_real_escape_string($connection, $user_email);
     $user_password = mysqli_real_escape_string($connection, $user_password);
+    
+    $query = "SELECT randSalt FROM users";
+    $select_randsalt_query = mysqli_query($connection, $query);
+    
+    confirmQuery($select_randsalt_query);
 
 
     
