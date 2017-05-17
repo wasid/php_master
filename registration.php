@@ -38,6 +38,8 @@ if(isset($_POST['submit'])){
             $salt = $row['randSalt'];
             
         }
+        
+        $user_password = crypt($user_password, $salt);
     
     
         
