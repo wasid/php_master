@@ -36,20 +36,31 @@ if(isset($_POST['update_user_submit'])){
     
     // move_uploaded_file($user_image_temp, "../images/$user_image");
     
-   $query = "UPDATE users SET ";
-        $query .="username = '{$username}', ";
-        $query .="user_password = {$user_password}, ";
-        $query .="user_firstname = '{$user_firstname}', ";
-        $query .="user_lastname = '{$user_lastname}', ";
-        // $query .="post_date = now(), ";
-        // $query .="post_image = '{$post_image}', ";
-        $query .="user_email = '{$user_email}', ";
-        $query .="user_role = '{$user_role}' ";
-        $query .="WHERE user_id = {$update_user_id} ";
+    $salt_query = "SELECT randSalt FROM users";
+    $select_randsalt_query = mysqli_query($connection, $salt_query);
+    
+    confirmQuery($select_randsalt_query);
+    
+    $row = mysqli_fetch_array($select_randsalt_query);
         
-        $update_user_query = mysqli_query($connection, $query);
+    $salt = $row['randSalt'];
+    
+    $hashed_password = crypt($user_password, $salt);
 
-        confirmQuery($update_user_query);
+    $query = "UPDATE users SET ";
+    $query .="username = '{$username}', ";
+    $query .="user_password = '{$hashed_password}', ";
+    $query .="user_firstname = '{$user_firstname}', ";
+    $query .="user_lastname = '{$user_lastname}', ";
+    // $query .="post_date = now(), ";
+    // $query .="post_image = '{$post_image}', ";
+    $query .="user_email = '{$user_email}', ";
+    $query .="user_role = '{$user_role}' ";
+    $query .="WHERE user_id = {$update_user_id} ";
+    
+    $update_user_query = mysqli_query($connection, $query);
+
+    confirmQuery($update_user_query);
         
     
     header("Location: users.php");

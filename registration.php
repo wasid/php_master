@@ -33,11 +33,10 @@ if(isset($_POST['submit'])){
         
         confirmQuery($select_randsalt_query);
         
-        while($row = mysqli_fetch_array($select_randsalt_query)){
+        $row = mysqli_fetch_array($select_randsalt_query);
             
-            $salt = $row['randSalt'];
-            
-        }
+        $salt = $row['randSalt'];
+
         
         $user_password = crypt($user_password, $salt);
     
