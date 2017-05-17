@@ -21,37 +21,55 @@ if(isset($_POST['submit'])){
     $user_email    = $_POST['email'];
     $user_password = $_POST['password'];
     
-    $username      = mysqli_real_escape_string($connection, $username);
-    $user_email    = mysqli_real_escape_string($connection, $user_email);
-    $user_password = mysqli_real_escape_string($connection, $user_password);
-    
-    $query = "SELECT randSalt FROM users";
-    $select_randsalt_query = mysqli_query($connection, $query);
-    
-    confirmQuery($select_randsalt_query);
-    
-    while($row = mysqli_fetch_array($select_randsalt_query)){
+    if(!empty($username) && !empty($user_email) && !empty($user_password)){
         
-        echo $salt = $row['randSalt'];
+        
+        $username      = mysqli_real_escape_string($connection, $username);
+        $user_email    = mysqli_real_escape_string($connection, $user_email);
+        $user_password = mysqli_real_escape_string($connection, $user_password);
+        
+        $query = "SELECT randSalt FROM users";
+        $select_randsalt_query = mysqli_query($connection, $query);
+        
+        confirmQuery($select_randsalt_query);
+        
+        while($row = mysqli_fetch_array($select_randsalt_query)){
+            
+            $salt = $row['randSalt'];
+            
+        }
+    
+    
+        
+        $query = "INSERT INTO users(username, user_password, user_email, user_role )";
+        
+        $query .= "VALUE( '{$username}', '{$user_password}', '{$user_email}', 'Subscriber' ) ";
+        
+        
+            $register_user_query = mysqli_query($connection, $query);
+    
+            confirmQuery($register_user_query);
+            
+            $msg ="<p class='bg-success text-center'>Your Registration has been submitted!</p>";
+            
+        
+        // header("Location: users.php");   
+        
         
     }
-
-
     
-    // $query = "INSERT INTO users(username, user_password, user_firstname, user_lastname, user_email, user_image, user_role )";
+    else{
+            $msg ="<p class='bg-danger text-center'>Input fields can not be empty!</p>";
+        }
     
-    // $query .= "VALUE( '{$username}', '{$user_password}', '{$user_firstname}', '{$user_lastname}', '{$user_email}', '{$user_image}', '{$user_role}' ) ";
-    
-    
-    //     $update_user_query = mysqli_query($connection, $query);
-
-    //     confirmQuery($update_user_query);
-        
-    
-    // header("Location: users.php");
+   
 
     
-  }  
+  }
+  
+    else{
+            $msg ="";
+        }
     
     
 
@@ -61,6 +79,7 @@ if(isset($_POST['submit'])){
     <div class="row">
         <div class="col-xs-6 col-xs-offset-3">
             <h1 class="text-center">Registration</h1>
+            <?php echo $msg; ?>
             <form action="" method="POST"> 
                     <div class="form-group">
                        <input name="username" class="form-control" type="text" placeholder="Enter username">    
