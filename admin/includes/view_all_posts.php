@@ -45,6 +45,44 @@ if(isset($_POST['selectBoxIdArray'])){
       
         break;
       
+      case 'Clone':
+        
+          $query = "SELECT * FROM posts WHERE post_id = $post_Id ";
+          
+          $select_post__query = mysqli_query($connection, $query);    
+          
+          while($row = mysqli_fetch_assoc($select_post__query)){
+                 
+              $post_title = $row['post_title'];
+              $post_cat_id = $row['post_category_id'];
+              $post_author = $row['post_author'];
+              $post_content = $row['post_content'];
+              $post_tags = $row['post_tags'];
+              $post_status = $row['post_status'];
+              // $post_date = $row['post_date'];
+              $post_image = $row['post_image'];
+              
+              
+          }
+          
+          $query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date, post_image, post_content, post_tags, post_status)";
+    
+          $query .= "VALUE( {$post_cat_id}, '{$post_title}', '{$post_author}', now(), '{$post_image}', '{$post_content}', '{$post_tags}', '{$post_status}' ) ";
+          
+          
+          $cloned_post_query = mysqli_query($connection, $query);
+          
+          
+          confirmQuery($cloned_post_query);
+          
+          $created_post_id = mysqli_insert_id($connection);
+          
+          echo "<p class='bg-success'>Post Cloned Successfully!";
+      
+            
+        break;
+    
+      
     }
   
     
@@ -59,6 +97,7 @@ if(isset($_POST['selectBoxIdArray'])){
       <option value="Published">Published</option>
       <option value="Unpublished">Unpublished</option>
       <option value="Delete">Delete</option>
+      <option value="Clone">Clone</option>
     </select>
   </div>
   <div class="col-xm-4">
@@ -88,7 +127,7 @@ if(isset($_POST['selectBoxIdArray'])){
               <!--<tr>-->
                   
                 <?php
-                $query = "SELECT * FROM posts";
+                $query = "SELECT * FROM posts ORDER BY post_id DESC";
                 $post_admin_query = mysqli_query($connection, $query);    
                 
                 while($row = mysqli_fetch_assoc($post_admin_query)){
