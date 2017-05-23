@@ -81,6 +81,18 @@ if(isset($_POST['selectBoxIdArray'])){
       
             
         break;
+        
+        case 'reset_views':
+        
+          $query = "UPDATE posts SET ";
+          $query .="post_views_count = 0 ";
+          $query .="WHERE post_id = '{$post_Id}' ";
+          
+          $reset_post_views_query = mysqli_query($connection, $query);
+  
+          confirmQuery($reset_post_views_query);
+      
+        break;
     
       
     }
@@ -98,6 +110,7 @@ if(isset($_POST['selectBoxIdArray'])){
       <option value="Unpublished">Unpublished</option>
       <option value="Delete">Delete</option>
       <option value="Clone">Clone</option>
+      <option value="reset_views">Reset Post Views</option>
     </select>
   </div>
   <div class="col-xm-4">
