@@ -120,6 +120,7 @@ if(isset($_POST['selectBoxIdArray'])){
             <th>Image</th>
             <th>Comments</th>
             <th>Date</th>
+            <th>Post viewed</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -142,6 +143,7 @@ if(isset($_POST['selectBoxIdArray'])){
                     $post_status = $row['post_status'];
                     $post_date = $row['post_date'];
                     $post_image = $row['post_image'];
+                    $post_views_count = $row['post_views_count'];
             
                     echo "<tr>";
                     ?>
@@ -170,6 +172,7 @@ if(isset($_POST['selectBoxIdArray'])){
                     echo "<td><img width='250' class='img-responsive' src='../images/{$post_image}' alt='image'></td>";
                     echo "<td>{$post_comment_count}</td>";
                     echo "<td>{$post_date}</td>";
+                    echo "<td>{$post_views_count}</td>";
                     echo "<td><a href='posts.php?source=update_post&post_update_id={$post_id}'>Edit</a> | <a onClick=\" javascript: return confirm('Are you sure you want to delete?'); \" href='posts.php?delete={$post_id}'>Delete</a></td>";
                     echo "</tr>";
                 }

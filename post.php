@@ -27,10 +27,16 @@
                     
                     <?php
                     
-                    if (isset($_GET['post_id'])) {
-                        $show_post_id = $_GET['post_id'];
-                    }
+                if (isset($_GET['post_id'])) {
                     
+                    $show_post_id = $_GET['post_id'];
+                    
+                    $post_view_count_query = "UPDATE posts SET post_views_count = post_views_count + 1 ";
+                    $post_view_count_query .= "WHERE post_id = $show_post_id ";
+                    $post_view_count = mysqli_query($connection, $post_view_count_query);
+                    
+                    confirmQuery($post_view_count);
+
                     $query = "SELECT * FROM posts WHERE post_id = $show_post_id ";
                     $post_all_query = mysqli_query($connection, $query);
                        
@@ -64,7 +70,15 @@
                     <p><?php echo $post_content ?></p>
                     <hr>
     
-                <?php } ?>
+                <?php }
+                
+                }
+                else{
+                    
+                    header("Location: index.php");
+                }
+                
+                ?>
                 
                  <!-- Blog Comments -->
                  
