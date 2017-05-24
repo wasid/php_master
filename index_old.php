@@ -22,19 +22,15 @@
                 
                 <?php
                 
-                $post_query_count = "SELECT * FROM posts ";
-                $find_count = mysqli_query($connection, $post_query_count);
-                echo $count = mysqli_num_rows($find_count);
-                
                 $query = "SELECT * FROM posts WHERE post_status = 'Published' ";
                 $post_all_query = mysqli_query($connection, $query);
                 
                                        
-              if (mysqli_num_rows($post_all_query) == 0) {
+               if (mysqli_num_rows($post_all_query) == 0) {
                    
-                  echo "<h1 class='text-center'>No post has been published yet!</h1>";
+                   echo "<h1 class='text-center'>No post has been published yet!</h1>";
                    
-              }
+               }
                    
                    while($row = mysqli_fetch_assoc($post_all_query)){
                        
