@@ -19,6 +19,8 @@
                 
                 <?php
                 
+                $post_per_page = 3;
+                
                 if (isset($_GET['page'])) {
                     echo $page = $_GET['page'];
                 } else {
@@ -29,7 +31,7 @@
                     
                     $start_limit_point = 0;
                 }else{
-                    echo $start_limit_point = ($page * 3) - 3;
+                    echo $start_limit_point = ($page * $post_per_page) - $post_per_page;
                 }
                 
                 
@@ -49,7 +51,7 @@
                 $count = ceil($count / 3);
                 
                 // $query = "SELECT * FROM posts LIMIT $start_limit_point, 3";
-                $query = "SELECT * FROM posts WHERE post_status = 'Published' LIMIT $start_limit_point, 3";
+                $query = "SELECT * FROM posts WHERE post_status = 'Published' LIMIT $start_limit_point, $post_per_page";
                 $post_all_query = mysqli_query($connection, $query);
                 
                                        
