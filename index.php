@@ -16,19 +16,40 @@
 
         <div class="row">
             <div class="col-md-8">
+                
+                <?php
+                
+                if (isset($_GET['page'])) {
+                    echo $page = $_GET['page'];
+                } else {
+                    $page = "";
+                }
+                
+                if($page == "" || $page == 1 ){
+                    
+                    $start_limit_point = 0;
+                }else{
+                    echo $start_limit_point = ($page * 3) - 3;
+                }
+                
+                
+                
+                ?>
+                
             </div>
             <!-- Blog Entries Column -->
             <div class="col-md-8 success_search">
                 
                 <?php
                 
-                $post_query_count = "SELECT * FROM posts ";
+                $post_query_count = "SELECT * FROM posts WHERE post_status = 'Published'";
                 $find_count = mysqli_query($connection, $post_query_count);
                 $count = mysqli_num_rows($find_count);
                 
                 $count = ceil($count / 3);
                 
-                $query = "SELECT * FROM posts WHERE post_status = 'Published' ";
+                // $query = "SELECT * FROM posts LIMIT $start_limit_point, 3";
+                $query = "SELECT * FROM posts WHERE post_status = 'Published' LIMIT $start_limit_point, 3";
                 $post_all_query = mysqli_query($connection, $query);
                 
                                        
@@ -85,12 +106,15 @@
 
                 <hr>
 
-            <?php }
+            <?php
+            }
                 else{
                     
                     echo"<h1 class='text-center'>Post is waiting for Admin approval!</h1>";
                 }
-            } ?>
+            } 
+            
+            ?>
 
             </div>
             
@@ -113,7 +137,7 @@
             
             for ($i = 1; $i <= $count; $i++) {
                 
-                echo "<li><a href='index.php?$i'>$i</a></li>";
+                echo "<li><a href='index.php?page=$i'>$i</a></li>";
             }
             
             
