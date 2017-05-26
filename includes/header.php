@@ -1,6 +1,8 @@
 <!--Session start for Index and so on rathar than admin area-->
 <?php session_start(); ?>
-
+<!--function file from admin folder-->
+<?php include "./admin/function.php"; ?>
+  
 <!DOCTYPE html>
 <html lang="en">
 

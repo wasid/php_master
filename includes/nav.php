@@ -47,6 +47,7 @@ if (isset($_SESSION['user_role'])) {
                 
                 <ul class="nav navbar-nav navbar-right top-nav">
                     <?php if( $_SESSION['username']){ ?>
+                    <li><a href="">Online Users: <span class="badge"><?php echo online_users(); ?></span></a></li>
                     <li><a href="admin/index.php">Admin Area</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['username']; ?> <b class="caret"></b></a>
