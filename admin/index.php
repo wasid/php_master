@@ -7,21 +7,27 @@
         
         $session = session_id();
         $time = time();
-        $time_out_in_sec = 60;
+        $time_out_in_sec = 30;
         $time_out = $time - $time_out_in_sec;
         
-        $query = "SELECT * FROM users_online WHERE session = '$session' "
+        $query = "SELECT * FROM users_online WHERE session = '$session' ";
         $send_query = mysqli_query($connection, $query);
         $count_online = mysqli_num_rows($send_query);
         
         if($count_online == NULL){
             
-            mysqli_query($connection, "INSERT INTO users_onlie(session, time) VALUES('$session', '$time') ");
+            mysqli_query($connection, "INSERT INTO users_online(session, time) VALUES('$session', '$time') ");
             
         }
         else{
             
+            mysqli_query($connection, "UPDATE users_online SET time = '$time' WHERE session = '$session' ");
+            
         }
+        
+        $count_online_users_query = mysqli_query($connection, "SELECT * FROM  users_online WHERE time > '$time_out' ");
+        
+        $count_online_users = mysqli_num_rows($count_online_users_query);
         
         ?>
 
@@ -40,6 +46,8 @@
                             Welcome to Admin
                             <small><?php echo $_SESSION['username']; ?></small>
                         </h1>
+                        
+                        <h1><?php echo $count_online_users; ?> </h1>
                     </div>
                 </div>
                 <!-- /.row -->
