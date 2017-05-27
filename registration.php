@@ -10,7 +10,6 @@
 <?php include "includes/nav.php"; ?>
 
     <!-- functions -->
-<?php include "admin/function.php"; ?>
 
 <?php
 
@@ -28,17 +27,21 @@ if(isset($_POST['submit'])){
         $user_email    = mysqli_real_escape_string($connection, $user_email);
         $user_password = mysqli_real_escape_string($connection, $user_password);
         
-        $query = "SELECT randSalt FROM users";
-        $select_randsalt_query = mysqli_query($connection, $query);
         
-        confirmQuery($select_randsalt_query);
         
-        $row = mysqli_fetch_array($select_randsalt_query);
+        $user_password = password_hash("$user_password", PASSWORD_BCRYPT, array('cost' => 12) );
+        
+        // $query = "SELECT randSalt FROM users";
+        // $select_randsalt_query = mysqli_query($connection, $query);
+        
+        // confirmQuery($select_randsalt_query);
+        
+        // $row = mysqli_fetch_array($select_randsalt_query);
             
-        $salt = $row['randSalt'];
+        // $salt = $row['randSalt'];
 
         
-        $user_password = crypt($user_password, $salt);
+        // $user_password = crypt($user_password, $salt);
     
     
         
@@ -49,7 +52,7 @@ if(isset($_POST['submit'])){
         
             $register_user_query = mysqli_query($connection, $query);
     
-            confirmQuery($register_user_query);
+            // confirmQuery($register_user_query);
             
             $msg ="<p class='bg-success text-center'>Your Registration has been submitted!</p>";
             
