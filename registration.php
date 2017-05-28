@@ -10,6 +10,7 @@
 <?php include "includes/nav.php"; ?>
 
     <!-- functions -->
+<?php include "includes/indexFunction.php"; ?>
 
 <?php
 
@@ -52,7 +53,7 @@ if(isset($_POST['submit'])){
         
             $register_user_query = mysqli_query($connection, $query);
     
-            // confirmQuery($register_user_query);
+            confirmQ($register_user_query);
             
             $msg ="<p class='bg-success text-center'>Your Registration has been submitted!</p>";
             

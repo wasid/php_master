@@ -10,7 +10,7 @@
 <?php include "includes/nav.php"; ?>
 
     <!-- functions -->
-<?php include "admin/function.php"; ?>
+<?php include "includes/indexFunction.php"; ?>
 
 
 

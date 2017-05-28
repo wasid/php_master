@@ -1,12 +1,13 @@
 <?php
 
-function confirmQuery($result){
+function confirmQuery($output){
 global $connection;
     
-    if(!$result){
-      die("Query failed. " . mysqli_error($connection));
+    if(!$output){
+      die("Query failed. " . mysqli_error($connection) . ' ' . mysqli_errno($connection));
     }
 }
+
 
 function online_users(){
 global $connection;

@@ -1,6 +1,6 @@
 <?php include "db.php"?>
 <?php session_start(); ?>
-<?php include "function.php"?>
+<?php include "indexFunction.php"?>
 
 <?php
 
@@ -15,7 +15,7 @@ if (isset($_POST['login'])) {
    $query = "SELECT * FROM users WHERE username = '{$username}'";
    $select_user_query = mysqli_query($connection, $query);
    
-   confirmQuery($select_user_query);
+   confirmQ($select_user_query);
 }
 
  while($row = mysqli_fetch_assoc($select_user_query)){  
