@@ -29,15 +29,8 @@ if (isset($_POST['login'])) {
      
      
  }
- 
- $password = crypt($password, $db_password);
- 
- if ($username !== $db_username && $password !== $db_password) {
-     
-     header("Location: ../index.php");
- }
- 
- elseif ($username === $db_username && $password === $db_password) {
+
+ if (password_verify($password, $db_password)) {
      
      $_SESSION['username'] = $db_username;
      $_SESSION['user_firstname'] = $db_firstname;
