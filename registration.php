@@ -28,8 +28,6 @@ if(isset($_POST['submit'])){
         $user_email    = mysqli_real_escape_string($connection, $user_email);
         $user_password = mysqli_real_escape_string($connection, $user_password);
         
-        
-        
         $user_password = password_hash("$user_password", PASSWORD_BCRYPT, array('cost' => 12) );
         
         // $query = "SELECT randSalt FROM users";
