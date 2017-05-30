@@ -183,7 +183,17 @@ if(isset($_POST['selectBoxIdArray'])){
                     echo "<td>{$post_tags}</td>";
                     echo "<td>{$post_status}</td>";
                     echo "<td><img width='250' class='img-responsive' src='../images/{$post_image}' alt='image'></td>";
+                    
+                    // Counting comments for particular post
+                    $query = "SELECT * FROM comments WHERE comment_post_id = $post_id";
+                    $comment_count_query = mysqli_query($connection, $query);
+                    confirmQuery($comment_count_query);
+                    $post_comment_count = mysqli_num_rows($comment_count_query);
+                    
+
                     echo "<td>{$post_comment_count}</td>";
+                    
+   
                     echo "<td>{$post_date}</td>";
                     echo "<td>{$post_views_count}</td>";
                     echo "<td><a href='posts.php?source=update_post&post_update_id={$post_id}'>Edit</a> | <a onClick=\" javascript: return confirm('Are you sure you want to delete?'); \" href='posts.php?delete={$post_id}'>Delete</a></td>";

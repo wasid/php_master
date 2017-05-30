@@ -9,8 +9,6 @@
 
 <?php include "includes/nav.php"; ?>
 
-
-
     <!-- Page Content -->
     <div class="container">
 
@@ -159,4 +157,3 @@
         </ul>
 
 <?php include "includes/footer.php"; ?>
-
