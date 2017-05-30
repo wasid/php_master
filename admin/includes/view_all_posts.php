@@ -188,12 +188,10 @@ if(isset($_POST['selectBoxIdArray'])){
                     $query = "SELECT * FROM comments WHERE comment_post_id = $post_id";
                     $comment_count_query = mysqli_query($connection, $query);
                     confirmQuery($comment_count_query);
-                    $row = mysqli_fetch_array($comment_count_query);
-                    $comment_id = $row['comment_id'];
                     $post_comment_count = mysqli_num_rows($comment_count_query);
                     
 
-                    echo "<td><a href='comment.php?=$comment_id'>{$post_comment_count}</a></td>";
+                    echo "<td><a href='../admin/comments.php?source=posts_comment&post_id=$post_id'>{$post_comment_count}</a></td>";
                     
    
                     echo "<td>{$post_date}</td>";

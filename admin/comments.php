@@ -45,6 +45,11 @@
                         include "includes/update_comment.php";
                         break;
                     
+                    case 'posts_comment':
+                        
+                        include "includes/posts_comment.php";
+                        break;
+                    
                     default:
                         include "includes/view_all_comments.php";
                         break;
