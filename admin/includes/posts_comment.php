@@ -55,9 +55,9 @@
                       }
   
                       echo "<td>{$comment_date}</td>";
-                      echo "<td><a href='comments.php?approve={$comment_id}'>Approve</a> |
-                      <a href='comments.php?unapprove={$comment_id}'>Unapprove</a></td>";
-                      echo "<td><a href='comments.php?delete={$comment_id}'>Delete</a></td>";
+                      echo "<td><a href='comments.php?source=posts_comment&post_id=$post_id&approve={$comment_id}'>Approve</a> |
+                      <a href='comments.php?source=posts_comment&post_id=$post_id&unapprove={$comment_id}'>Unapprove</a></td>";
+                      echo "<td><a href='comments.php?source=posts_comment&post_id=$post_id&delete={$comment_id}'>Delete</a></td>";
                       echo "</tr>";
                   }
                 
@@ -74,7 +74,7 @@
         $approve_comment_id = $_GET['approve'];
         $approve_comment = "UPDATE comments SET comment_status = 'Approved' WHERE comment_id = {$approve_comment_id} ";
         $approve_comment_query = mysqli_query($connection, $approve_comment);
-        header("Location: comments.php");
+        header('Location: https://'. $_SERVER['SERVER_NAME'] .'/admin/comments.php?source=posts_comment&post_id='.$post_id.'');
         
       }
       
@@ -83,7 +83,7 @@
         $unapprove_comment_id = $_GET['unapprove'];
         $unapprove_comment = "UPDATE comments SET comment_status = 'Unapproved' WHERE comment_id = {$unapprove_comment_id} ";
         $unapprove_comment_query = mysqli_query($connection, $unapprove_comment);
-        header("Location: comments.php");
+        header('Location: https://'. $_SERVER['SERVER_NAME'] .'/admin/comments.php?source=posts_comment&post_id='.$post_id.'');
         
       }
       
@@ -92,7 +92,7 @@
         $del_comment_id = $_GET['delete'];
         $query_comment = "DELETE FROM comments WHERE comment_id = {$del_comment_id} ";
         $del_comment_query = mysqli_query($connection, $query_comment);
-        header("Location: comments.php");
+        header('Location: https://'. $_SERVER['SERVER_NAME'] .'/admin/comments.php?source=posts_comment&post_id='.$post_id.'');
         
       }
       
