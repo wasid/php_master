@@ -9,9 +9,6 @@
 
 <?php include "includes/nav.php"; ?>
 
-    <!-- functions -->
-<?php include "admin/function.php"; ?>
-
 
 
     <!-- Page Content -->

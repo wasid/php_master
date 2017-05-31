@@ -83,10 +83,10 @@ if(isset($_POST['submit'])){
     
     </div>
     
-    <div class="form-group">
-      <label for="post_author">Post Author:</label>
-      <input name="author" type="text" class="form-control" placeholder="Enter Post Author">
-    </div>
+    <!--<div class="form-group">-->
+    <!--  <label for="post_author">Post Author:</label>-->
+    <!--  <input name="author" type="text" class="form-control" placeholder="Enter Post Author">-->
+    <!--</div>-->
     <div class="form-group">
       <label for="post_status">Post Status:</label>
       <select name="post_status" id="">
