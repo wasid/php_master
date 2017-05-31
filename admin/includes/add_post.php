@@ -1,9 +1,22 @@
 <?php
 
+if(isset($_SESSION['user_id'])){
+  $post_user_id = $_SESSION['user_id'];
+  
+  $query = "SELECT * FROM users WHERE user_id = $post_user_id ";
+  $post_user_query = mysqli_query($connection, $query);
+  
+  confirmQuery($post_user_query);
+  
+  while($row = mysqli_fetch_assoc($post_user_query)){
+      
+       echo $post_author = $row['username'];
+  }
+}
 if(isset($_POST['submit'])){
     
     $post_title = $_POST['title'];
-    $post_author = $_POST['author'];
+    // $post_author = $_POST['author'];
     $post_category_id = $_POST['post_category_id'];
     $post_status = $_POST['post_status'];
     
