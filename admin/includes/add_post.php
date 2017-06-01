@@ -10,7 +10,7 @@ if(isset($_SESSION['user_id'])){
   
   while($row = mysqli_fetch_assoc($post_user_query)){
       
-       echo $post_author = $row['username'];
+       $post_author = $row['username'];
   }
 }
 if(isset($_POST['submit'])){

@@ -1,4 +1,6 @@
 <?php
+
+
     
     if(isset($_GET['post_update_id'])){
             
@@ -23,10 +25,25 @@
         
         
         if (isset($_POST['update_post'])) {
+          
+            
+          if(isset($_SESSION['user_id'])){
+            $post_user_id = $_SESSION['user_id'];
+            
+            $query = "SELECT * FROM users WHERE user_id = $post_user_id ";
+            $post_user_query = mysqli_query($connection, $query);
+            
+            confirmQuery($post_user_query);
+            
+            while($row = mysqli_fetch_assoc($post_user_query)){
+                
+                 $post_author = $row['username'];
+            }
+          }
 
         // echo $_POST['u_author'];
         
-        $post_author = $_POST['u_author'];
+        // $post_author = $_POST['u_author'];
         $post_title = $_POST['u_title'];
         $post_category_id = $_POST['u_post_category'];
         $post_status = $_POST['u_post_status'];
@@ -126,7 +143,7 @@
     
     <div class="form-group">
       <label for="post_author">Post Author:</label>
-      <input name="u_author" type="text" class="form-control" value="<?php echo $post_author; ?>">
+      <?php echo $post_author; ?>
     </div>
     <div class="form-group">
       <label for="post_status">Post Status:</label>
