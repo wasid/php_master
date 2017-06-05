@@ -209,10 +209,19 @@ if(isset($_POST['selectBoxIdArray'])){
       
       if (isset($_GET['delete'])) {
         
-        $del_post_id = $_GET['delete'];
-        $query_post = "DELETE FROM posts WHERE post_id = {$del_post_id} ";
-        $del_post_query = mysqli_query($connection, $query_post);
-        header("Location: posts.php");
+        if (isset($_SESSION['user_role'])) {
+    
+            if (($_SESSION['user_role']) == "Admin") {
+                $del_post_id = $_GET['delete'];
+                $query_post = "DELETE FROM posts WHERE post_id = {$del_post_id} ";
+                $del_post_query = mysqli_query($connection, $query_post);
+                header("Location: posts.php");
+            }
+           
+        }
+        else {
+          header("Location: ../index.php");
+        }
         
       }
       
