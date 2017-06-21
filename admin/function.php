@@ -1,5 +1,10 @@
 <?php
 
+function escape($str){
+global $connection;
+   return mysqli_real_escape_string($connection, trim($str));
+}
+
 function confirmQuery($output){
 global $connection;
     
